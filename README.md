@@ -1,58 +1,64 @@
-# Developer Profile
+# itsmygithubacct
 
-## Summary
+I build small, sharp tools around Linux, terminals, and developer workflows.
+The work leans heavily toward systems tooling, minimal-dependency software, and
+interfaces that are useful both to humans and to automation.
 
-Python developer specializing in CLI tools, system monitoring, and log analysis. Builds clean, tested, well-documented command-line applications following modern packaging standards. Comfortable with Linux systems, DevOps workflows, and infrastructure tooling.
+## Featured Projects
 
-## Technical Skills
+### [bash_linux](https://github.com/itsmygithubacct/bash_linux)
 
-| Category | Technologies |
-|----------|-------------|
-| **Languages** | Python 3.9+ |
-| **CLI Frameworks** | Click |
-| **System & OS** | psutil, Linux administration, process management |
-| **Data Formats** | JSON, Common Log Format, structured logging |
-| **Testing** | pytest (86 tests across two projects, 100% pass rate) |
-| **Packaging** | setuptools, pyproject.toml, PEP 621 |
-| **Version Control** | Git, GitHub |
-| **Output Design** | Terminal dashboards, visual bars, colored output, structured JSON |
+A bootable Linux system with a tiny bash-centric userspace. It currently ships
+four build variants, all boot-tested and all under 3 MB.
 
-## Portfolio Projects
+- Pure bash variant with GNU Bash plus 28 integrated loadable builtins
+- Full variant with a practical tiny userland via `sbase-box` and `awk`
+- Disk variant using squashfs + overlayfs + optional live 9P host-dir sharing
+- Users variant adding multiple identities and lightweight login/su tooling
 
-### sysmon - System Monitoring Dashboard
-A fast CLI tool for real-time system health monitoring.
+What it demonstrates:
 
-- **What it does:** Displays CPU (per-core), memory, disk, network, and top processes as a colored terminal dashboard or structured JSON
-- **Key features:** Watch mode with configurable refresh, JSON output for piping into `jq` or monitoring systems, visual bar charts
-- **Tech:** Python, Click, psutil
-- **Tests:** 43 passing (collector, formatter, CLI integration)
-- **Demonstrates:** Systems programming, real-time data collection, terminal UI design, clean API output
+- Linux build pipelines and boot flows
+- Tiny-system design under explicit size budgets
+- QEMU-driven validation and reproducible build/test workflows
+- Clear technical documentation for a non-trivial systems project
 
-### log-analyzer - Log File Analysis Tool
-A CLI tool that parses, filters, and summarizes log files.
+### [tmux-browse](https://github.com/itsmygithubacct/tmux-browse)
 
-- **What it does:** Auto-detects Common Log Format and JSON-lines, filters by severity/status/path, produces summary reports
-- **Key features:** Streaming line-by-line processing (memory-efficient), stdin support for piping, multi-format auto-detection
-- **Tech:** Python, Click
-- **Tests:** 43 passing (parser, analyzer, formatter, CLI integration)
-- **Demonstrates:** Text parsing, data aggregation, streaming I/O, multi-format support, filtering pipelines
+A tmux toolkit with two surfaces: a web dashboard for browsing local tmux
+sessions and `tb`, a CLI designed for both humans and LLM tool-use loops.
 
-## Strengths
+- Dashboard with per-session ttyd terminals, hot buttons, idle alerts, and
+  restart controls
+- `tb` CLI for listing, inspecting, creating, scripting, and driving tmux
+  sessions
+- Stable machine-readable JSON output and pragmatic human-facing terminal output
+- Optional Bearer-token auth and TLS, with stdlib-only Python on the server side
 
-- **Test-driven:** Every module has thorough unit and integration tests
-- **Unix philosophy:** Tools that do one thing well, support piping, and produce both human and machine-readable output
-- **Documentation:** Comprehensive READMEs with real usage examples, sample output, and project structure
-- **Modern Python:** src layout, pyproject.toml, typed APIs, clean CLI argument handling
+What it demonstrates:
 
-## What I'm Looking For
+- tmux/session orchestration
+- terminal-first product design
+- HTTP and CLI interface design in the same codebase
+- practical automation tooling for agent and operator workflows
 
-Open to freelance work, contract roles, or full-time positions involving:
-- Python CLI/backend development
-- DevOps and infrastructure tooling
-- System monitoring and observability
-- Log processing and data pipelines
-- Automation and scripting
+## Technical Themes
+
+- Linux, QEMU, initramfs, overlayfs, squashfs, 9P
+- Python CLIs and stdlib-first services
+- Bash and Unix process orchestration
+- Human-readable and machine-readable interface design
+- Documentation that explains both usage and architecture
+
+## Working Style
+
+- Prefer simple deployment and low operational overhead
+- Bias toward explicit contracts, stable output, and clean failure modes
+- Keep tooling scriptable first, then make the human UX pleasant
+- Treat documentation as part of the product, not an afterthought
 
 ## Links
 
 - GitHub: https://github.com/itsmygithubacct
+- bash_linux: https://github.com/itsmygithubacct/bash_linux
+- tmux-browse: https://github.com/itsmygithubacct/tmux-browse
