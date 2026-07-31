@@ -119,7 +119,7 @@ The native applications led to small libraries with narrow ownership:
 | Repository | Contract |
 | --- | --- |
 | **[kitty-framebuffer](https://github.com/itsmygithubacct/kitty-framebuffer)** | Threaded, newest-frame-wins RGBA presentation through the Kitty graphics protocol, with synchronized updates and crash-safe terminal restoration |
-| **[kitty-keyboard](https://github.com/itsmygithubacct/kitty-keyboard)** | Allocation-free Kitty keyboard parser plus optional POSIX lifecycle, including independent press, repeat, release, and held-key state |
+| **[kitty-keyboard](https://github.com/itsmygithubacct/kitty-input/tree/main/third_party/kitty_keyboard)** | Allocation-free Kitty keyboard parser plus optional POSIX lifecycle, including independent press, repeat, release, and held-key state |
 | **[kitty-input](https://github.com/itsmygithubacct/kitty-input)** | Preserves wire order across keyboard, mouse, focus, paste, and controller input, then maps those events to rebindable semantic actions |
 | **[kitty-terminal-session](https://github.com/itsmygithubacct/kitty-terminal-session)** | Correctly ordered composition of framebuffer and input ownership, including normal and emergency shutdown |
 | **[soft-raster](https://github.com/itsmygithubacct/soft-raster)** | Pure C11 framebuffer primitives, alpha sprites, bitmap text, image loading, and letterbox scaling with byte-pinned blending behavior |
@@ -127,8 +127,10 @@ The native applications led to small libraries with narrow ownership:
 | **[chip-sequencer](https://github.com/itsmygithubacct/chip-sequencer)** | Deterministic fixed-point chip synthesis and pattern sequencing that produces audio without owning a device, pipe, or thread |
 | **[kilix-state](https://github.com/itsmygithubacct/kilix-state)** | Bounded, ownership-checked, CRC-protected application state with atomic durable replacement and endian-stable codecs |
 
-**[soft-raster-py](https://github.com/itsmygithubacct/soft-raster-py)** and
-**[kilix-state-py](https://github.com/itsmygithubacct/kilix-state-py)** expose
+**[soft-raster/python](https://github.com/itsmygithubacct/soft-raster/tree/main/python)**
+and
+**[kilix-state/python](https://github.com/itsmygithubacct/kilix-state/tree/main/python)**
+expose
 the native raster and state contracts to Python without moving their
 security- or ownership-bearing behavior out of C.
 
@@ -143,14 +145,14 @@ cross-library updates atomic while keeping each component independently useful:
 
 | Component | Ownership boundary |
 | --- | --- |
-| **[kilix-game-kit](https://github.com/itsmygithubacct/kilix-game-kit)** | Pins the terminal, input, raster, audio, and state runtime and adds fixed-step timing, reversible host lifecycle, semantic audio, and headless test support |
-| **[kilix-assets](https://github.com/itsmygithubacct/kilix-assets)** | Validates and owns bounded image decoding, manifests, atlases, caching, and animation; games retain semantic asset meaning |
-| **[kilix-story](https://github.com/itsmygithubacct/kilix-story)** | Evaluates bounded story state, conditions, transactional actions, and dialogue traversal without defining game rules |
-| **[kilix-world](https://github.com/itsmygithubacct/kilix-world)** | Supplies projection-independent grids, paths, sight, regions, interactions, and portals without owning rendering or mutable actors |
-| **[kilix-top-down-engine](https://github.com/itsmygithubacct/kilix-top-down-engine)** | Deterministic orthographic cameras, framebuffers, pixel-art drawing, and logical viewport fitting |
-| **[kilix-tactics-engine](https://github.com/itsmygithubacct/kilix-tactics-engine)** | Deterministic isometric projection, picking, pathfinding, line of sight, cover, and stable draw ordering |
-| **[kilix-ui](https://github.com/itsmygithubacct/kilix-ui)** | Game-rule-free menus, panels, dialogue, meters, and RPG interface composites |
-| **[kilix-game-tools](https://github.com/itsmygithubacct/kilix-game-tools)** | Standard-library validation plus byte-reproducible release archives; it never enters the runtime path |
+| **[kilix-game-kit](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-game-kit)** | Pins the terminal, input, raster, audio, and state runtime and adds fixed-step timing, reversible host lifecycle, semantic audio, and headless test support |
+| **[kilix-assets](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-assets)** | Validates and owns bounded image decoding, manifests, atlases, caching, and animation; games retain semantic asset meaning |
+| **[kilix-story](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-story)** | Evaluates bounded story state, conditions, transactional actions, and dialogue traversal without defining game rules |
+| **[kilix-world](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-world)** | Supplies projection-independent grids, paths, sight, regions, interactions, and portals without owning rendering or mutable actors |
+| **[kilix-top-down-engine](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-top-down-engine)** | Deterministic orthographic cameras, framebuffers, pixel-art drawing, and logical viewport fitting |
+| **[kilix-tactics-engine](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-tactics-engine)** | Deterministic isometric projection, picking, pathfinding, line of sight, cover, and stable draw ordering |
+| **[kilix-ui](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-ui)** | Game-rule-free menus, panels, dialogue, meters, and RPG interface composites |
+| **[kilix-game-tools](https://github.com/itsmygithubacct/kilix-game-sdk/tree/main/kilix-game-tools)** | Standard-library validation plus byte-reproducible release archives; it never enters the runtime path |
 
 **[python-sound-generator](https://github.com/itsmygithubacct/python-sound-generator)**
 provides a lazy, modular CLI for deterministic procedural audio and
@@ -172,9 +174,9 @@ Twelve released games exercise that stack across very different simulations:
 | **[Kilix Lights](https://github.com/itsmygithubacct/kilix-lights)** | A full-color Lights Out puzzle with guaranteed-solvable boards, keyboard and pointer controls, undo, and persistent settings |
 | **[Kilix Pong](https://github.com/itsmygithubacct/kilix-pong)** | Deterministic paddle-ball with local two-player input, bounded collision substeps, and a reproducible fixed-point sound generator |
 | **[Kilix Rancher](https://github.com/itsmygithubacct/kilix-rancher)** | A creature-raising game with weekly care decisions, training, real-time positional battles, rivals, and progression |
-| **[Kitty Brokeout](https://github.com/itsmygithubacct/kitty-brokeout)** | Breakout with fixed-step physics, varied bricks, powerups, multiball, particles, and deterministic tests |
+| **[Kilix Brokeout](https://github.com/itsmygithubacct/kilix-brokeout)** | Breakout with fixed-step physics, varied bricks, powerups, multiball, particles, and deterministic tests |
 | **[Super Kilix](https://github.com/itsmygithubacct/super-kilix)** | An original side-scrolling platformer with 32 deterministic starvaults, runtime-drawn art, and in-memory synthesized audio |
-| **[Terminal Lander](https://github.com/itsmygithubacct/terminal_lander)** | Lunar Lander with four difficulty models, physical sound banks, exact held controls, and headless simulation checks |
+| **[Kilix Lander](https://github.com/itsmygithubacct/kilix-lander)** | Lunar Lander with four difficulty models, physical sound banks, exact held controls, and headless simulation checks |
 
 The games render real pixels without SDL, X11, or ncurses in their runtime
 path. Most expose deterministic headless simulation, render, input, and audio
