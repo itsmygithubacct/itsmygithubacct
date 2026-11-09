@@ -79,7 +79,12 @@ The operating-system boundary remains separately versioned:
   regular Debian installation whose graphical session is Pleb, with pinned,
   rollback-safe component updates.
 
-Four providers turn the same terminal into different desktops:
+The [Plebian OS components map](https://github.com/itsmygithubacct/plebian-os/blob/main/docs/components.md)
+lists every repository below by how it reaches an installed system: built into
+Kilix, pinned in the release file, installed at first boot or on first use,
+offered by the content catalog, or not installed at all.
+
+Five providers turn the same terminal into different desktops:
 
 | Repository | Desktop contract |
 | --- | --- |
@@ -87,6 +92,7 @@ Four providers turn the same terminal into different desktops:
 | **[Kilix Cap](https://github.com/itsmygithubacct/kilix-cap)** | A native C mansion whose physical rooms and objects launch desktop functions, games, documents, monitors, and bounded housekeeping actions |
 | **[Kilix Land](https://github.com/itsmygithubacct/kilix-land-desktop)** | A walkable, avatar-driven desktop whose rooms and interactive objects expose operating-system functions |
 | **[Kilix TUI](https://github.com/itsmygithubacct/kilix-tui-utils)** | A text-native desktop over the same shared utility suite, usable through Kitty graphics, SSH, tmux, or a bare console |
+| **[Kilix IceWM](https://github.com/itsmygithubacct/kilix-icewm)** | The unmodified IceWM window manager inside a Kilix pane, with its menu generated from the content catalog |
 
 The application layer includes:
 
@@ -161,22 +167,26 @@ generation outside the native runtime.
 
 ### Games
 
-Twelve released games exercise that stack across very different simulations:
+Twelve games exercise that stack across very different simulations. All but
+Super Kilix are developed together in
+**[kilix-games](https://github.com/itsmygithubacct/kilix-games)**, which Kilix
+installs from on demand (`kilix games play <id>`); their earlier standalone
+repositories are archived.
 
 | Project | What it is |
 | --- | --- |
-| **[Bashed Earth](https://github.com/itsmygithubacct/bashed-earth)** | Falling-sand artillery with destructible terrain, water, weather, fire, an economy, and five AI personalities |
-| **[C-COM](https://github.com/itsmygithubacct/c-com-ufo-defense)** | A complete strategy and turn-based tactics campaign with a persistent globe, bases, interception, research, manufacturing, tactical missions, and ironman saves |
-| **[Chess Bash](https://github.com/itsmygithubacct/chess-bash)** | Animated isometric chess with complete rules, battle sequences, Stockfish support, and a built-in fallback engine |
-| **[Joustix](https://github.com/itsmygithubacct/joustix)** | Flying-joust arcade combat with held-key input, enemy classes, eggs, waves, and lava hazards |
-| **[Kilix Fishtank](https://github.com/itsmygithubacct/kilix-fishtank)** | An arcade aquarium with real fish species, shark attacks, fishing, boat battles, and a lightweight water simulation |
-| **[Kilix JPAK](https://github.com/itsmygithubacct/kilix-jpak)** | A clean-room action-puzzle game with 100 deterministic starvaults, route-aware generation, hazards, machines, gates, and persistent unlocks |
-| **[Kilix Lights](https://github.com/itsmygithubacct/kilix-lights)** | A full-color Lights Out puzzle with guaranteed-solvable boards, keyboard and pointer controls, undo, and persistent settings |
-| **[Kilix Pong](https://github.com/itsmygithubacct/kilix-pong)** | Deterministic paddle-ball with local two-player input, bounded collision substeps, and a reproducible fixed-point sound generator |
-| **[Kilix Rancher](https://github.com/itsmygithubacct/kilix-rancher)** | A creature-raising game with weekly care decisions, training, real-time positional battles, rivals, and progression |
-| **[Kilix Brokeout](https://github.com/itsmygithubacct/kilix-brokeout)** | Breakout with fixed-step physics, varied bricks, powerups, multiball, particles, and deterministic tests |
+| **[Bashed Earth](https://github.com/itsmygithubacct/kilix-games/tree/main/bashed-earth)** | Falling-sand artillery with destructible terrain, water, weather, fire, an economy, and five AI personalities |
+| **[Chess Bash](https://github.com/itsmygithubacct/kilix-games/tree/main/chess-bash)** | Animated isometric chess with complete rules, battle sequences, Stockfish support, and a built-in fallback engine |
+| **[Joustix](https://github.com/itsmygithubacct/kilix-games/tree/main/joustix)** | Flying-joust arcade combat with held-key input, enemy classes, eggs, waves, and lava hazards |
+| **[Kilix Fishtank](https://github.com/itsmygithubacct/kilix-games/tree/main/kilix-fishtank)** | An arcade aquarium with real fish species, shark attacks, fishing, boat battles, and a lightweight water simulation |
+| **[Kilix JPAK](https://github.com/itsmygithubacct/kilix-games/tree/main/kilix-jpak)** | A clean-room action-puzzle game with 100 deterministic starvaults, route-aware generation, hazards, machines, gates, and persistent unlocks |
+| **[Kilix Lights](https://github.com/itsmygithubacct/kilix-games/tree/main/kilix-lights)** | A full-color Lights Out puzzle with guaranteed-solvable boards, keyboard and pointer controls, undo, and persistent settings |
+| **[Kilix Pong](https://github.com/itsmygithubacct/kilix-games/tree/main/kilix-pong)** | Deterministic paddle-ball with local two-player input, bounded collision substeps, and a reproducible fixed-point sound generator |
+| **[Kilix Rancher](https://github.com/itsmygithubacct/kilix-games/tree/main/kilix-rancher)** | A creature-raising game with weekly care decisions, training, real-time positional battles, rivals, and progression |
+| **[Kilix Brokeout](https://github.com/itsmygithubacct/kilix-games/tree/main/kilix-brokeout)** | Breakout with fixed-step physics, varied bricks, powerups, multiball, particles, and deterministic tests |
 | **[Super Kilix](https://github.com/itsmygithubacct/super-kilix)** | An original side-scrolling platformer with 32 deterministic starvaults, runtime-drawn art, and in-memory synthesized audio |
-| **[Kilix Lander](https://github.com/itsmygithubacct/kilix-lander)** | Lunar Lander with four difficulty models, physical sound banks, exact held controls, and headless simulation checks |
+| **[Kilix Lander](https://github.com/itsmygithubacct/kilix-games/tree/main/kilix-lander)** | Lunar Lander with four difficulty models, physical sound banks, exact held controls, and headless simulation checks |
+| **[Tic-Tac-Toe](https://github.com/itsmygithubacct/kilix-games/tree/main/tictactoe-tui)** | Tic-tac-toe drawn in the terminal it runs from, with a trained neural opponent |
 
 The games render real pixels without SDL, X11, or ncurses in their runtime
 path. Most expose deterministic headless simulation, render, input, and audio
